@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<marc:collection xmlns:marc="http://www.loc.gov/MARC21/slim" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.loc.gov/MARC21/slim http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd">
+	<marc:record>
+		<marc:leader>02563nam a22003258i 4500</marc:leader>
+		<marc:controlfield tag="001">994217670402531</marc:controlfield>
+		<marc:controlfield tag="005">20140122023659.0</marc:controlfield>
+		<marc:controlfield tag="008">130910s2013    mnu      b    001 0 eng  </marc:controlfield>
+		<marc:datafield tag="010" ind1=" " ind2=" ">
+			<marc:subfield code="a">  2013028374</marc:subfield>
+		</marc:datafield>
+		<marc:datafield tag="020" ind1=" " ind2=" ">
+			<marc:subfield code="a">9780816689224 (hc : alk. paper)</marc:subfield>
+		</marc:datafield>
+		<marc:datafield tag="020" ind1=" " ind2=" ">
+			<marc:subfield code="a">9780816689231 (pb : alk. paper)</marc:subfield>
+		</marc:datafield>
+		<marc:datafield tag="035" ind1="0" ind2=" ">
+			<marc:subfield code="a">ocn840465577</marc:subfield>
+		</marc:datafield>
+		<marc:datafield tag="040" ind1=" " ind2=" ">
+			<marc:subfield code="a">DLC</marc:subfield>
+			<marc:subfield code="b">eng</marc:subfield>
+			<marc:subfield code="c">DLC</marc:subfield>
+			<marc:subfield code="e">rda</marc:subfield>
+		</marc:datafield>
+		<marc:datafield tag="042" ind1=" " ind2=" ">
+			<marc:subfield code="a">pcc</marc:subfield>
+		</marc:datafield>
+		<marc:datafield tag="050" ind1="0" ind2="0">
+			<marc:subfield code="a">BD336</marc:subfield>
+			<marc:subfield code="b">.M67 2013</marc:subfield>
+		</marc:datafield>
+		<marc:datafield tag="082" ind1="0" ind2="0">
+			<marc:subfield code="a">110</marc:subfield>
+			<marc:subfield code="2">23</marc:subfield>
+		</marc:datafield>
+		<marc:datafield tag="100" ind1="1" ind2=" ">
+			<marc:subfield code="a">Morton, Timothy,</marc:subfield>
+			<marc:subfield code="d">1968-</marc:subfield>
+		</marc:datafield>
+		<marc:datafield tag="245" ind1="1" ind2="0">
+			<marc:subfield code="a">Hyperobjects :</marc:subfield>
+			<marc:subfield code="b">philosophy and ecology after the end of the world /</marc:subfield>
+			<marc:subfield code="c">Timothy Morton.</marc:subfield>
+		</marc:datafield>
+		<marc:datafield tag="264" ind1=" " ind2="1">
+			<marc:subfield code="a">Minneapolis :</marc:subfield>
+			<marc:subfield code="b">University of Minnesota Press,</marc:subfield>
+			<marc:subfield code="c">2013.</marc:subfield>
+		</marc:datafield>
+		<marc:datafield tag="300" ind1=" " ind2=" ">
+			<marc:subfield code="a">x, 229 pages :</marc:subfield>
+			<marc:subfield code="b">illustrations ;</marc:subfield>
+			<marc:subfield code="c">22 cm.</marc:subfield>
+		</marc:datafield>
+		<marc:datafield tag="336" ind1=" " ind2=" ">
+			<marc:subfield code="a">text</marc:subfield>
+			<marc:subfield code="2">rdacontent</marc:subfield>
+		</marc:datafield>
+		<marc:datafield tag="337" ind1=" " ind2=" ">
+			<marc:subfield code="a">unmediated</marc:subfield>
+			<marc:subfield code="2">rdamedia</marc:subfield>
+		</marc:datafield>
+		<marc:datafield tag="338" ind1=" " ind2=" ">
+			<marc:subfield code="a">volume</marc:subfield>
+			<marc:subfield code="2">rdacarrier</marc:subfield>
+		</marc:datafield>
+		<marc:datafield tag="490" ind1="0" ind2=" ">
+			<marc:subfield code="a">Posthumanities ;</marc:subfield>
+			<marc:subfield code="v">27</marc:subfield>
+		</marc:datafield>
+		<marc:datafield tag="504" ind1=" " ind2=" ">
+			<marc:subfield code="a">Includes bibliographical references and index.</marc:subfield>
+		</marc:datafield>
+		<marc:datafield tag="505" ind1="0" ind2=" ">
+			<marc:subfield code="a">A Quake in Being: An Introduction to Hyperobjects -- Part I. What Are Hyperobjects? -- Viscosity -- Nonlocality -- Temporal Undulation -- Phasing -- Interobjectivity -- Part II. The Time of Hyperobjects -- The End of the World -- Hypocrisies -- The Age of Asymmetry.</marc:subfield>
+		</marc:datafield>
+		<marc:datafield tag="520" ind1=" " ind2=" ">
+			<marc:subfield code="a">&quot;Having set global warming in irreversible motion, we are facing the possibility of ecological catastrophe. But the environmental emergency is also a crisis for our philosophical habits of thought, confronting us with a problem that seems to defy not only our control but also our understanding. Global warming is perhaps the most dramatic example of what Timothy Morton calls &quot;hyperobjects&quot;--Entities of such vast temporal and spatial dimensions that they defeat traditional ideas about what a thing is in the first place. In this book, Morton explains what hyperobjects are and their impact on how we think, how we coexist with one another and with nonhumans, and how we experience our politics, ethics, and art. Moving fluidly between philosophy, science, literature, visual and conceptual art, and popular culture, the book argues that hyperobjects show that the end of the world has already occurred in the sense that concepts such as world, nature, and even environment are no longer a meaningful horizon against which human events take place. Instead of inhabiting a world, we find ourselves inside a number of hyperobjects, such as climate, nuclear weapons, evolution, or relativity. Such objects put unbearable strains on our normal ways of reasoning.&quot;-- Publisher's website.</marc:subfield>
+		</marc:datafield>
+		<marc:datafield tag="650" ind1=" " ind2="0">
+			<marc:subfield code="a">Object (Philosophy)</marc:subfield>
+		</marc:datafield>
+		<marc:datafield tag="650" ind1=" " ind2="0">
+			<marc:subfield code="a">Future, The.</marc:subfield>
+		</marc:datafield>
+		<marc:datafield tag="730" ind1="0" ind2=" ">
+			<marc:subfield code="a">Project Muse UPCC books</marc:subfield>
+			<marc:subfield code="5">net</marc:subfield>
+		</marc:datafield>
+	</marc:record>
+</marc:collection>
