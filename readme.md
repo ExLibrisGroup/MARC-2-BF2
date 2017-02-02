@@ -7,6 +7,7 @@ This repository consists of sample MARCXML records and one or more XSLT files. A
 ![Enrich and transform records in Alma](https://www.lucidchart.com/publicSegments/view/41d37dbd-ec24-4674-b7a9-15ec4a415708/image.png)
 
 To execute the XSLT transformation there are a few options to choose from:
+
 1. http://www.freeformatter.com/xsl-transformer.html
 2. On a Unix server try http://xmlsoft.org/XSLT/xsltproc2.html
 3. Using a programing language, for example for Java see http://stackoverflow.com/questions/4604497/xslt-processing-with-java
