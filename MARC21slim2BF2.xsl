@@ -139,19 +139,55 @@
 
 		<!-- _____________ WORK _____________  -->
 		<!-- title -->
-		<xsl:for-each select="marc:datafield[@tag=245]|marc:datafield[@tag=246]">
+		<xsl:if test="marc:datafield[@tag=245]|marc:datafield[@tag=246]">
 			<bf:Work rdf:about="https://open-na.hosted.exlibrisgroup.com/alma/DEMO_INST/entity/work/TODO.rdf">
-				<bf:title>
-					<bf:workTitle>
-						<bf:mainTitle><xsl:call-template name="subfieldSelect">
-						<xsl:with-param name="codes">
-							abfghk
-						</xsl:with-param>
-					</xsl:call-template></bf:mainTitle>
-					</bf:workTitle>
-				</bf:title>
+				<xsl:for-each select="marc:datafield[@tag=245]|marc:datafield[@tag=246]">
+					<bf:title>
+						<bf:workTitle>
+							<bf:mainTitle><xsl:call-template name="subfieldSelect">
+							<xsl:with-param name="codes">
+								abfghk
+							</xsl:with-param>
+						</xsl:call-template></bf:mainTitle>
+						</bf:workTitle>
+					</bf:title>
+				</xsl:for-each>
+
+				<!--336 sf 2-->
+				<xsl:if test="marc:datafield[@tag=336]/marc:subfield[@code='2']">
+					<bf:content>
+						<rdf:value>text</rdf:value>
+						<bf:source><xsl:value-of select="marc:datafield[@tag=336]/marc:subfield[@code='2']" /></bf:source>
+					</bf:content>
+				</xsl:if>
+
+				<!--337 sf 2-->
+				<xsl:if test="marc:datafield[@tag=337]/marc:subfield[@code='2']">
+					<bf:media>
+						<rdf:value>unmediated</rdf:value>
+						<bf:source><xsl:value-of select="marc:datafield[@tag=337]/marc:subfield[@code='2']" /></bf:source>
+					</bf:media>
+				</xsl:if>
+
+				<!-- seriesStatement from 490a -->
+				<xsl:if test="marc:datafield[@tag=490]/marc:subfield[@code='a']">
+					<bf:seriesStatement><xsl:value-of select="marc:datafield[@tag=490]/marc:subfield[@code='a']" /></bf:seriesStatement>
+				</xsl:if>
+
+				<!-- summary from 520a -->
+				<xsl:if test="marc:datafield[@tag=520]/marc:subfield[@code='a']">
+					<bf:summary>
+						<rdfs:label><xsl:value-of select="marc:datafield[@tag=520]/marc:subfield[@code='a']" /></rdfs:label>
+					</bf:summary>
+				</xsl:if>
+
+				<!-- seriesEnumeration from 490v-->
+				<xsl:if test="marc:datafield[@tag=490]/marc:subfield[@code='v']">
+					<bf:seriesEnumeration><xsl:value-of select="marc:datafield[@tag=490]/marc:subfield[@code='v']" /></bf:seriesEnumeration>
+				</xsl:if>
+
 			</bf:Work>
-		</xsl:for-each>
+		</xsl:if>
 
 
 		<!-- _____________ INSTANCE _____________ -->
@@ -307,12 +343,27 @@
 				<bf:dimensions><xsl:value-of select="marc:subfield[@code='c']" /></bf:dimensions>
 			</xsl:for-each>
 
-			<!--note from 504 -->
+			<!-- carrier from 338 sf 2-->
+			<xsl:for-each select="marc:datafield[@tag=338]">
+				<bf:carrier>
+					<rdf:value>volume</rdf:value>
+					<bf:source><xsl:value-of select="marc:subfield[@code='2']" /></bf:source>
+				</bf:carrier>
+			</xsl:for-each>
+
+			<!-- note from 504 a -->
 			<xsl:for-each select="marc:datafield[@tag=504]">
 				<bf:note>
 					<bf:noteType>bibliography</bf:noteType>
 					<rdfs:label><xsl:value-of select="marc:subfield[@code='a']" /></rdfs:label>
 				</bf:note>
+			</xsl:for-each>
+
+			<!--tableOfContents from 505a-->
+			<xsl:for-each select="marc:datafield[@tag=505]">
+				<bf:tableOfContents>
+					<rdfs:label><xsl:value-of select="marc:subfield[@code='a']" /></rdfs:label>
+				</bf:tableOfContents>
 			</xsl:for-each>
 
 		</bf:Instance>
