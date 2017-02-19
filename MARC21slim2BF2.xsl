@@ -109,6 +109,16 @@
 		</xsl:choose>
 	</xsl:template>
 
+	<xsl:template name="textInFirstParentheses">
+    	<xsl:param name="string1"/>
+    	<xsl:value-of select="substring-before(    substring-after( $string1,'(' )    ,  ')')"/>
+  	</xsl:template>
+
+  	<xsl:template name="textAfterFirstParentheses">
+    	<xsl:param name="string1"/>
+    	<xsl:value-of select="substring-after( $string1,')' )"/>
+  	</xsl:template>
+
 	<xsl:output method="xml" indent="yes" />
 
 	<xsl:template match="/">
@@ -198,7 +208,13 @@
 			<xsl:for-each select="marc:datafield[@tag=010]">
 				<bf:identifiedBy>
 					<bf:Lccn>
-						<rdf:value><xsl:value-of select="marc:subfield[@code='a']" /></rdf:value>
+						<xsl:if test="marc:subfield[@code='a']">
+							<rdf:value><xsl:value-of select="marc:subfield[@code='a']" /></rdf:value>
+						</xsl:if>
+						<xsl:if test="marc:subfield[@code='z']">
+							<rdf:value><xsl:value-of select="marc:subfield[@code='z']" /></rdf:value>
+							<rdfs:label>invalid</rdfs:label>
+						</xsl:if>
 					</bf:Lccn>
 				</bf:identifiedBy>
 			</xsl:for-each>
@@ -209,9 +225,20 @@
 				<bf:identifiedBy>
 					<xsl:for-each select="marc:datafield[@tag=020]">
 						<bf:Isbn>
-							<rdf:value><xsl:value-of select="marc:subfield[@code='a']" /></rdf:value>
-							<bf:source>http://www.isbnsearch.org/isbn/<xsl:value-of select="substring-before(marc:subfield[@code='a'],' ')"></xsl:value-of>
-							</bf:source>
+							<xsl:if test="marc:subfield[@code='a']">
+								<rdf:value><xsl:value-of select="marc:subfield[@code='a']" /></rdf:value>
+								<bf:source>http://www.isbnsearch.org/isbn/<xsl:value-of select="substring-before(marc:subfield[@code='a'],' ')"></xsl:value-of></bf:source>
+							</xsl:if>
+							<xsl:if test="marc:subfield[@code='c']">
+								<rdf:acquisitionTerms><xsl:value-of select="marc:subfield[@code='c']" /></rdf:acquisitionTerms>
+							</xsl:if>
+							<xsl:if test="marc:subfield[@code='q']">
+								<rdf:qualifier><xsl:value-of select="marc:subfield[@code='q']" /></rdf:qualifier>
+							</xsl:if>
+							<xsl:if test="marc:subfield[@code='z']">
+								<rdf:value><xsl:value-of select="marc:subfield[@code='z']" /></rdf:value>
+								<rdfs:label>invalid</rdfs:label>
+							</xsl:if>
 						</bf:Isbn>
 					</xsl:for-each>
 				</bf:identifiedBy>
@@ -221,7 +248,26 @@
 			<xsl:for-each select="marc:datafield[@tag=035]">
 				<bf:identifiedBy>
 					<bf:Local>
-						<rdf:value><xsl:value-of select="marc:subfield[@code='a']" /></rdf:value>
+						<xsl:if test="marc:subfield[@code='a']">
+							<rdf:value>
+								<xsl:call-template name="textAfterFirstParentheses">
+									<xsl:with-param name="string1">
+										<xsl:value-of select="marc:subfield[@code='a']" />
+									</xsl:with-param>
+								</xsl:call-template>
+							</rdf:value>
+							<rdf:source>
+								<xsl:call-template name="textInFirstParentheses">
+									<xsl:with-param name="string1">
+										<xsl:value-of select="marc:subfield[@code='a']" />
+									</xsl:with-param>
+								</xsl:call-template>
+							</rdf:source>
+						</xsl:if>
+						<xsl:if test="marc:subfield[@code='z']">
+							<rdf:value><xsl:value-of select="marc:subfield[@code='z']" /></rdf:value>
+							<rdfs:label>invalid</rdfs:label>
+						</xsl:if>
 					</bf:Local>
 				</bf:identifiedBy>
 			</xsl:for-each>
@@ -325,22 +371,39 @@
 				</bf:publication>
 			</xsl:for-each>
 
-			<!-- extent from 300$$a -->
+			<!-- extent from 300$$a,f,g -->
 			<xsl:for-each select="marc:datafield[@tag=300]">
-				<bf:extent><xsl:value-of select="marc:subfield[@code='a']" /></bf:extent>
-			</xsl:for-each>
+				<xsl:if test="marc:subfield[@code='a']">
+					<bf:extent>
+						<rdfs:label>
+							<xsl:call-template name="subfieldSelect">
+								<xsl:with-param name="codes">
+									afg
+								</xsl:with-param>
+							</xsl:call-template>
+						</rdfs:label>
+					</bf:extent>
+				</xsl:if>
 
-			<!--noteType from 300$$b -->
-			<xsl:for-each select="marc:datafield[@tag=300]">
-				<bf:note>
-					<bf:noteType>Physical details</bf:noteType>
-					<rdfs:label><xsl:value-of select="marc:subfield[@code='b']" /></rdfs:label>
-				</bf:note>
-			</xsl:for-each>
+				<!--noteType from 300$$b,e -->
+				<xsl:if test="marc:subfield[@code='b']">
+					<bf:note>
+						<bf:noteType>Physical details</bf:noteType>
+						<rdfs:label><xsl:value-of select="marc:subfield[@code='b']" /></rdfs:label>
+					</bf:note>
+				</xsl:if>
+				<xsl:if test="marc:subfield[@code='e']">
+					<bf:note>
+						<bf:noteType>Accompanying material</bf:noteType>
+						<rdfs:label><xsl:value-of select="marc:subfield[@code='e']" /></rdfs:label>
+					</bf:note>
+				</xsl:if>
 
-			<!--dimensions from 300$$c -->
-			<xsl:for-each select="marc:datafield[@tag=300]">
-				<bf:dimensions><xsl:value-of select="marc:subfield[@code='c']" /></bf:dimensions>
+				<!--dimensions from 300$$c -->
+				<xsl:if test="marc:subfield[@code='c']">
+					<bf:dimensions><xsl:value-of select="marc:subfield[@code='c']" /></bf:dimensions>
+				</xsl:if>
+
 			</xsl:for-each>
 
 			<!-- carrier from 338 sf 2-->
