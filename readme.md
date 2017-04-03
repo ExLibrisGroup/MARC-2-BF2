@@ -1,3 +1,5 @@
+Not maintained anymore - see https://github.com/lcnetdev/marc2bibframe2
+
 # MARC to BIBFRAME 2 Crosswalk
 
 This represents an ongoing effort to create a crosswalk to transform MARC21 records into [BIBFRAME 2](https://www.loc.gov/bibframe/docs/bibframe2-model.html). The resulting crosswalk will be used in Ex Libris's Alma to enable display and export of records in BIBFRAME.
